@@ -1,10 +1,7 @@
-FROM node:12
+FROM node:16
 WORKDIR /usr/src/app/
-COPY /frontend/package*.json ./
-RUN npm install
-COPY /frontend ./
+RUN npm install express --save
+COPY /index.js ./
 RUN ls -la
-RUN npm run build
-RUN npm start
-EXPOSE 8080
-CMD [ "node", "src/App.js" ]
+EXPOSE 80
+CMD [ "node", "index.js" ]
